@@ -1,0 +1,27 @@
+<div class="login-container">
+    <div class="login-form">
+
+        <!-- IMAGES -->
+        <div class="hanging-image">
+            <img *ngIf="isLoginForm" src="assets/img/spider.jpg">
+            <img *ngIf="!isLoginForm" src="assets/img/venom.svg">
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form *ngIf="isLoginForm" [formGroup]="loginForm">
+            <label for="phoneNumber">Phone Number</label>
+            <div class="input-group">
+                <input type="text" id="username" maxlength="10" formControlName="contact_number" appNumbersOnly>
+            <span class="error" *ngIf="(loginFormSubmitted || loginForm.controls['contact_number'].touched) && loginForm.controls['contact_number'].hasError('required')">{{"*Phone Number is required to get OTP"}}</span>
+            </div>
+            <button type="submit">{{"Get OTP"}}</button>
+        </form>
+
+        <!-- OTP FORM -->
+        <form *ngIf="!isLoginForm" [formGroup]="otpForm" (ngSubmit)="validateOTP()">
+            <ng-otp-input [formCtrl]="otpForm.controls['otp']" [config]="otpConfig"></ng-otp-input>
+            <span class="error" *ngIf="(otpFormSubmitted || otpForm.controls['otp'].touched) && otpForm.controls['otp'].hasError('required')">{{"*Otp is required to proceed"}}</span>
+            <button type="submit">{{"Verify OTP"}}</button>
+        </form>
+    </div>
+</div>

@@ -1,1 +1,70 @@
 /* You can add global styles to this file, and also import other style files */
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff; /* Light gray background */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+/* Header styles */
+header {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.user {
+    font-weight: bold;
+}
+
+/* Sidebar styles */
+.sidebar {
+    background-color: #000;
+    color: #fff;
+    width: 250px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.2s;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+a:hover {
+    color: #777;
+}
+
+.error {
+    margin-top: 10px;
+    color: rgb(255, 0, 0);
+}

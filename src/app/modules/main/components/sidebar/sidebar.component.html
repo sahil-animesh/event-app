@@ -1,0 +1,41 @@
+<!-- Sidebar Start -->
+<aside class="sidebar">
+    <button class="d-lg-none close_btn" (click)="hideSidebar()"><img src="assets/img/icons/close_icon.svg" alt="Close"
+            width="30" /></button>
+    <nav class="navbar text-left">
+        <a href="javascript:void(0)" routerLink="/" class="navbar-brand ms-3">
+            <img src="assets/img/venom.svg" alt="Super Theme" width="110" />
+        </a>
+        <ul class="navbar-nav w-100">
+            <li *ngFor="let menu of sidebarMenu;let i = index" [class]="menu?.children?'nav-item dropdown':''"
+                [id]="'menue'+i">
+                
+                <div>
+                    
+                    <a href="javascript:void(0)" [class]="menu?.children?'nav-link dropdown-toggle':'nav-item nav-link'"
+                        (click)="toggleDropDown(i,menu)" aria-expanded="false" [routerLink]="menu.path"
+                        routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+                        <i class="me-2">
+                            <img [src]="menu.icon" width="24" alt="" />
+                        </i> {{menu?.title}}
+                    </a>
+                    
+                    <ul class="dropdown-menu border-0 px-2" *ngIf="menu?.children">
+                        <li *ngFor="let subMenu of menu.children"><a href="javascript:void(0)" class="nav-link"
+                                [routerLink]="subMenu.path" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: false }">-{{subMenu.title}}</a></li>
+                    </ul>
+
+                </div>
+
+            </li>
+        </ul>
+        <div class="logout_menu">
+            <a href="javascript:void(0)" (click)="logout()" class="nav-item nav-link">
+                <i class="me-2"><img src="https://www.svgrepo.com/show/43631/logout.svg" width="24" alt="Logout" />
+                </i> Log Out
+            </a>
+        </div>
+    </nav>
+</aside>
+<!-- Sidebar End -->
