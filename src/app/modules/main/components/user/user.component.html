@@ -1,0 +1,18 @@
+<div class="login-container">
+    <div class="login-form">
+
+        <!-- IMAGES -->
+        <div class="hanging-image">
+            <img src="assets/img/spider.jpg">
+        </div>
+        <form  [formGroup]="registrationForm" (ngSubmit)="register()">
+            <label for="firstName">User Name</label>
+            <div class="input-group">
+            <input type="text" id="username" maxlength="10" formControlName="name" >
+            <span class="error" *ngIf="(registrationForm.submit || registrationForm.controls['name'].touched) && 
+            registrationForm.controls['name'].hasError('required')">{{"*User name is required to get OTP"}}</span>
+            </div>
+            <button type="submit">{{"Proceed"}}</button>
+        </form>
+    </div>
+</div>

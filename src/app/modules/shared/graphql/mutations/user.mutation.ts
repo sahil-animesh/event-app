@@ -10,7 +10,18 @@ export const MUTATION = {
                         name
                         email
                     }
-                  }`
+                  }`,
+                  
+    LOGIN_USER:gql`
+                mutation LoginUser($contact_number: String!) {
+                  loginUser(input: {contact_number: $contact_number}) {
+                    success
+                    message
+                    token
+                  }
+                }
+    
+    `              
   },
   MAIN: {
     

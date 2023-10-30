@@ -9,6 +9,11 @@ export const PATHS = {
     },
 
     USER: {
-        CREATE_EVENT: 'create-event'
+        CREATE_EVENT: 'create-event',
+        REGISTER: 'register'
+    },
+    MAIN: {
+        
     }
+
 }

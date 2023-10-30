@@ -1,0 +1,14 @@
+<mat-drawer-container class="example-container" style="width: 100%;height: 100%; position: relative;" [hasBackdrop]="true">
+    <app-carousel></app-carousel>
+    <mat-drawer style="width: 50vh;position:fixed;margin-top: 8.2vh;"  #drawer [mode]="'push'" [opened]="true"  [position]="'end'" >
+        <app-create-event></app-create-event>
+    </mat-drawer>
+    <section style="position: absolute;bottom:0;right: 0;">
+        <button  (click)="[drawer.toggle()]"  mat-fab color="primary" aria-label="Example icon button with a delete icon">
+                <mat-icon>add</mat-icon>
+        </button>
+    
+    </section>
+    
+</mat-drawer-container>
+

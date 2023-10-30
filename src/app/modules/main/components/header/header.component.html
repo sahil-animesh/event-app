@@ -1,4 +1,34 @@
-<header>
-    <div class="logo">Event Dashboard</div>
-    <div class="user">John Doe</div>
-</header>
+<div style="height: 80vh;">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <div style="display: flex; flex-direction: row; justify-content: space-between;width:100%">
+                <div style="font-weight: 100px;font-size: 40px;">Event-X</div>
+                <span class="menu-spacer"></span>
+                <div fxShow="true" fxHide.lt-md style="display: flex; flex-direction: row;width: 50%; justify-content: space-evenly;padding: 1% 0 0 0 ;">
+                <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+                <div href="#" mat-button><span>Menu Item 1</span></div>
+                <div href="#" mat-button>Menu Item 1</div>
+                <div href="#" mat-button>Menu Item 1</div>
+                </div>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  
+    <mat-sidenav-container fxFlexFill>
+      <mat-sidenav #sidenav>
+        <mat-nav-list>
+          <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+          <a href="#" mat-list-item>Menu Item 1</a>
+          <a href="#" mat-list-item>Menu Item 2</a>
+          <a href="#" mat-list-item>Menu Item 3</a>
+          <a href="#" mat-list-item>Menu Item 4</a>
+          <a href="#" mat-list-item>Menu Item 5</a>
+          <a href="#"mat-list-item>Menu Item 6</a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <!-- <mat-sidenav-content fxFlexFill>Main content</mat-sidenav-content> -->
+    </mat-sidenav-container>
+  </div>

@@ -1,0 +1,46 @@
+<div style="background-color: #3f51b5;padding: 1%;height: 65px;text-align: center;color:azure;">
+    <h1>
+        Create Event 
+    </h1>
+</div>
+{{firstFormGroup.value|json}}
+<div style="display: flex;flex-direction: row;justify-content: start;">
+    <mat-stepper orientation="vertical" style="width: 100%;" [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup"> 
+          <form [formGroup]="firstFormGroup" style="display: flex;flex-direction: row;">
+            <ng-template matStepLabel style="box-shadow: none;">Select Event Type</ng-template>
+
+            <app-auto-complete-input [title]="'Event'" [placeholder]="'Event Type'" [inputControl]="firstFormGroup.get('firstCtrl')" [options]="eventOptions"></app-auto-complete-input>
+
+            <div style="padding: 4%;">
+              <button matStepperNext mat-mini-fab color="primary"><mat-icon>keyboard_arrow_right</mat-icon></button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup" style="display: flex;flex-direction: row;justify-content:space-evenly;width: 100% ;">
+            <ng-template matStepLabel>Fill out your address</ng-template>
+            <!-- <div style="padding: 4%;">
+              <button mat-mini-fab matStepperPrevious><mat-icon>keyboard_arrow_left</mat-icon></button>
+            </div> -->
+            <mat-form-field >
+              <mat-label>Address</mat-label>
+              <input matInput  formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                     required>
+            </mat-form-field>
+            <div style="padding: 4%;">
+              <button matStepperNext mat-mini-fab color="primary"><mat-icon>keyboard_arrow_right</mat-icon></button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+    </mat-stepper>
+</div>
+  

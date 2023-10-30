@@ -4,7 +4,7 @@ import { PARENT_PATHS } from './modules/shared/constant-files/routing-paths';
 import { AuthGuard } from './modules/shared/guards/auth.guard';
 
 const routes: Routes = [
-    { path: PARENT_PATHS.DEFAULT, redirectTo: PARENT_PATHS.AUTH, pathMatch:'full' },
+    { path: PARENT_PATHS.DEFAULT, redirectTo: PARENT_PATHS.USER, pathMatch:'full' },
     { path: PARENT_PATHS.AUTH, loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule) },
     { path: PARENT_PATHS.USER, loadChildren: () => import('./modules/main/main.module').then((m) => m.MainModule) },
 ];

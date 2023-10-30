@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { REGEX } from '../../../shared/constant-files/constant';
 import { GraphqlService } from 'src/app/modules/shared/services/graph-ql.service';
 import { AuthService } from 'src/app/modules/shared/services/auth.service';
+import { Router } from '@angular/router';
+import { PATHS } from 'src/app/modules/shared/constant-files/routing-paths';
 
 
 
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
   otpForm!: FormGroup | any;
-  isLoginForm: boolean = false;
+  isLoginForm: boolean = true;
   otpFormSubmitted = false;
   loginFormSubmitted = false;
   otpConfig = {
@@ -25,7 +27,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router:Router
   ) {}
 
   ngOnInit() {
@@ -51,7 +54,8 @@ export class LoginComponent implements OnInit {
   getOTP() {
     if(this.loginForm.valid) {
       this.authService.getOTP(this.loginForm.value).subscribe((res: any) => {
-        console.log(("otp sent successfully"))
+        localStorage.setItem('token',res?.data)
+        this.isLoginForm=false;
       })
     }
   }
@@ -62,7 +66,8 @@ export class LoginComponent implements OnInit {
   validateOTP() {
     if(this.otpForm.valid) {
       this.authService.validateOTP(this.otpForm.value).subscribe((res: any) => {
-        console.log("OTP validated");
+        localStorage.setItem('token',res.data);
+        this.router.navigateByUrl(PATHS.USER.REGISTER)
       })
     }
   }

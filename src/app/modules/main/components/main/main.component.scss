@@ -1,0 +1,28 @@
+
+// header {
+//     background-color: #f2f2f2;
+//     padding: 20px;
+//     text-align: center;
+// }
+header {
+    width: 100%;
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .container-fluid {
+    padding: 0;
+  }
+section {
+    padding: 20px;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

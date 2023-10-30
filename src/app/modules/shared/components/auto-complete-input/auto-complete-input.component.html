@@ -1,0 +1,18 @@
+<form class="example-form">
+    <mat-form-field class="example-full-width" style="width: 35vh;">
+      <mat-label *ngIf="title">{{title}}</mat-label>
+      <input type="text"
+             placeholder="{{placeholder||'Enter Here'}}"
+             matInput
+             [formControl]="inputControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <ng-container *ngFor="let option of filteredOptions | async; let index=index" >
+            <mat-option *ngIf="index<limit"  [value]="option">
+            {{option}}
+            </mat-option>
+        </ng-container>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+  

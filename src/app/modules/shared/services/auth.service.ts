@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { GraphqlService } from './graph-ql.service';
-import { MUTATION } from '../graphql/mutations/user.mutation';
 import { USER_AUTH, VALIDATE_OTP } from '../constant-files/interfaces/auth';
+import { HttpService } from './http.service';
+import { APIS } from '../constant-files/constant';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { USER_AUTH, VALIDATE_OTP } from '../constant-files/interfaces/auth';
 export class AuthService {
 
   constructor(
-    private graph: GraphqlService
+    private httpService:HttpService
   ) { }
 
   /**
@@ -18,7 +18,7 @@ export class AuthService {
    * @returns 
    */
   getOTP(data: USER_AUTH) {
-    return this.graph.mutate(MUTATION.AUTH.CREATE_USER,data);
+    return this.httpService.post(APIS.AUTH.LOGIN,data);
   }
   
   /**
@@ -27,6 +27,6 @@ export class AuthService {
    * @returns 
    */
   validateOTP(data: VALIDATE_OTP) {
-    return this.graph.mutate(MUTATION.AUTH.CREATE_USER,data);
+    return this.httpService.post(APIS.AUTH.VERIFY_OTP,data)
   }
 }
